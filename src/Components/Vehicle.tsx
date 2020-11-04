@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import classes from './Vehicle.module.css';
 
 type PropsType = {
   preview: string,
@@ -10,14 +11,14 @@ type PropsType = {
 
 const Vehicle: FC<PropsType> = ({ preview, name, type, description, rent }) => {
   return (
-    <li className="listItem">
-      <a className="listItemLink" href="#">
-        <img className="itemImg" src={preview} alt="preview" />
-        <div className="itemContent">
-          <h3 className="itemTitle">{name}</h3>
+    <li className={classes.listItem}>
+      <a className={classes.listItemLink} href="#">
+        <img className={classes.itemImg} src={preview} alt="preview" />
+        <div className={classes.itemContent}>
+          <h3 className={classes.itemTitle}>{name}</h3>
           <p>{type}</p>
-          <p className="itemDescription">{description}</p>
-          <span className="itemRent">{rent} $/h</span>
+          <p className={classes.itemDescription}>{description}</p>
+          <span className={classes.itemRent}>{rent} $/h</span>
         </div>
       </a>
     </li>
