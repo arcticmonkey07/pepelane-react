@@ -13,3 +13,7 @@
     padding-right: 16px;
   }
 }
+
+.container.dark {
+  background: var(--night);
+}

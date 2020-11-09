@@ -1,12 +1,10 @@
 import React from 'react';
-import './App.css';
 import { Provider } from 'react-redux';
 import { createStore, compose, applyMiddleware  } from 'redux';
 import rootReducer from './redux/reducers';
 import thunk from 'redux-thunk';
 
-import Header from './Components/Header';
-import Main from './Components/Main';
+import Content from './Components/Content/Content';
 
 function App() {
 
@@ -16,10 +14,7 @@ function App() {
 
   return (
     <Provider store={store}>
-      <div className="container">
-        <Header />
-        <Main />
-      </div>
+      <Content />
     </Provider>
   );
 }

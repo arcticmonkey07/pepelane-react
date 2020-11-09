@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchVehicles } from '../redux/actions/vehicles';
-import Preloader from './common/preloader/preloader';
-import classes from "./Main.module.css";
-import Vehicle from './Vehicle';
+import { fetchVehicles } from '../../redux/actions/vehicles';
+import Preloader from '../common/preloader/preloader';
+import classes from "./List.module.css";
+import Vehicle from './Vehicle/Vehicle';
 
 interface IFiltredVehicles {
   id: string
@@ -18,17 +18,18 @@ interface IFiltredVehicles {
   rent: number
 }
 
-const Main = () => {
+const List = () => {
   const dispatch = useDispatch();
   const items = useSelector(({ vehicles }: any) => vehicles.vehicles);
   const isLoaded = useSelector(({ vehicles }) => vehicles.isLoaded);
   const types = useSelector(({ vehicles }) => vehicles.types);
+  const isDark = useSelector(({ vehicles }: any) => vehicles.isDark);
 
   const [selectType, setSelectType] = useState<string>('whatever');
-  
+
   // const [types, setTypes] = useState<any[]>([]);
   const [filtredVehicles, setFiltredVehicles] = useState<IFiltredVehicles[]>([]);
-  
+
   useEffect(() => {
     dispatch(fetchVehicles());
     setFiltredVehicles(items);
@@ -59,35 +60,37 @@ const Main = () => {
   // )
 
   return (
-    <div className={classes.mainContainer}>
-      <div className={classes.topContainer}>
-        <div className={classes.left}>
-          <span className={classes.leftText}>Rent</span>
-          <select className={classes.selectType} value={selectType} onChange={changeTypes}>
-            {types.map((item) => <option key={item} value={item}>{item}</option>)}
-          </select>
-        </div>
+    <div className={`${isDark ? classes.dark : ''}`}>
+      <div className={classes.mainContainer}>
+        <div className={classes.topContainer}>
+          <div className={classes.left}>
+            <span className={classes.leftText}>Rent</span>
+            <select className={classes.selectType} value={selectType} onChange={changeTypes}>
+              {types.map((item) => <option key={item} value={item}>{item}</option>)}
+            </select>
+          </div>
 
-        <a className={classes.right} href="#">
-          <span className={classes.rightText}>Add new</span>
-          <button className={classes.buttonAdd}>+</button>
-        </a>
+          <a className={classes.right} href="#">
+            <span className={classes.rightText}>Add new</span>
+            <button className={classes.buttonAdd}>+</button>
+          </a>
+        </div>
+        <ul className={classes.list}>
+          {isLoaded
+            ? filtredVehicles.map((item: any) =>
+              <Vehicle
+                key={item.id}
+                preview={item.preview}
+                name={item.name}
+                type={item.type}
+                description={item.description}
+                rent={item.rent}
+              />)
+            : <Preloader />}
+        </ul>
       </div>
-      <ul className={classes.list}>
-        {isLoaded 
-          ? filtredVehicles.map((item: any) =>
-            <Vehicle
-              key={item.id}
-              preview={item.preview}
-              name={item.name}
-              type={item.type}
-              description={item.description}
-              rent={item.rent}
-            />)
-          : <Preloader /> }
-      </ul>
     </div>
   )
 }
 
-export default Main;
+export default List;

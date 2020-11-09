@@ -15,3 +15,8 @@ export const setVehicles = (items) => ({
   type: 'SET_VEHICLES',
   payload: items,
 });
+
+export const setDarkMode = (dark) => ({
+  type: 'SET_DARK',
+  payload: dark
+})

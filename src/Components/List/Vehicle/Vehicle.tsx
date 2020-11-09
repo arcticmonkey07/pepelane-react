@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import classes from './Vehicle.module.css';
+import { useSelector } from 'react-redux';
 
 type PropsType = {
   preview: string,
@@ -10,8 +11,10 @@ type PropsType = {
 }
 
 const Vehicle: FC<PropsType> = ({ preview, name, type, description, rent }) => {
+  const isDark = useSelector(({ vehicles }: any) => vehicles.isDark);
+
   return (
-    <li className={classes.listItem}>
+    <li className={`${classes.listItem} ${isDark ? classes.dark : ''}`}>
       <a className={classes.listItemLink} href="#">
         <img className={classes.itemImg} src={preview} alt="preview" />
         <div className={classes.itemContent}>

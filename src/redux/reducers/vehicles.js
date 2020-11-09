@@ -1,7 +1,10 @@
+const savedMode = JSON.parse(localStorage.getItem('dark'));
+
 const initialState = {
   vehicles: [],
   isLoaded: false,
   types: ['whatever', 'airship', 'rocket', 'helicopter', 'plane', 'custom'],
+  isDark: savedMode,
 };
 
 const vehicles = (state = initialState, action) => {
@@ -18,7 +21,11 @@ const vehicles = (state = initialState, action) => {
         ...state,
         isLoaded: action.payload,
       };
-
+    case 'SET_DARK':
+      return {
+        ...state,
+        isDark: !action.payload,
+      };
     default:
       return state;
   }
