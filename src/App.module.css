@@ -1,0 +1,19 @@
+.container {
+  position: relative;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media (max-width: 400px) {
+  .container {
+    max-width: 375px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+.container.dark {
+  background: var(--night);
+}

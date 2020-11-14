@@ -4,6 +4,8 @@
   align-items: center;
   margin: 0px 0 40px 0;
   padding-top: 48px;
+  padding-left: 20px;
+  padding-right: 20px;
   background:#fff;
 }
 
@@ -21,6 +23,25 @@
   align-items: center;
   justify-content: space-between;
   width: 652px;
+}
+
+.forecastIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.forecastLink {
+  display: flex;
+  align-items: center;
+  color: var(--light-text);
+}
+
+.forecastLink:hover {
+  color: var(--night-darken);
+}
+
+.forecastText {
+  margin-left: 10px;
 }
 
 .logo {
@@ -54,7 +75,7 @@
 .nightMode {
   position: relative;
   display: block;
-  margin-left: 20px;
+  margin-left: 10px;
   font-weight: 300;
   color: var(--light-text);
   transition: .2s ease;

@@ -1,21 +1,26 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Provider } from 'react-redux';
 import { createStore, compose, applyMiddleware  } from 'redux';
-import rootReducer from './redux/reducers';
+import { BrowserRouter } from 'react-router-dom';
+import rootReducer from './redux/index';
 import thunk from 'redux-thunk';
 
 import Content from './Components/Content/Content';
+import Header from './Components/Header/Header';
 
-function App() {
+const App: FC = () => {
 
   const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
   const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
 
   return (
-    <Provider store={store}>
-      <Content />
-    </Provider>
+    <BrowserRouter>
+      <Provider store={store}>
+        <Header />
+        <Content  />
+      </Provider>
+    </BrowserRouter>
   );
 }
 
