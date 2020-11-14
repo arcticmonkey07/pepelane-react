@@ -19,7 +19,7 @@ const Vehicle: FC<PropsType> = ({ preview, name, type, description, rent }) => {
         <img className={classes.itemImg} src={preview} alt="preview" />
         <div className={classes.itemContent}>
           <h3 className={classes.itemTitle}>{name}</h3>
-          <p>{type}</p>
+          <p className={classes.itemType}>{type}</p>
           <p className={classes.itemDescription}>{description}</p>
           <span className={classes.itemRent}>{rent} $/h</span>
         </div>

@@ -1,0 +1,10 @@
+.container {
+  min-height: 80vh;
+  background: var(--bg-light);
+  border-radius: 48px;
+}
+
+.wrapper {
+  width: 1200px;
+  margin: 0 auto;
+}

@@ -51,6 +51,15 @@
   color: var(--night-text);
 }
 
+.itemType {
+  font-weight: 300;
+  color: var(--light-text);
+}
+
+.dark .itemType {
+  color: var(--night-text);
+}
+
 .itemRent {
   margin: 0;
   font-weight: 700;

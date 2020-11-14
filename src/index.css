@@ -1,3 +1,5 @@
+@import '~antd/dist/antd.css';
+
 :root {
   --primary-color: #4959FF;
   --primary-hover: #293afa;

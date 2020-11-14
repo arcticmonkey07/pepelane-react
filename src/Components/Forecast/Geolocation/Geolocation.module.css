@@ -1,0 +1,9 @@
+.geolocationModalText {
+  font-size: 16px;
+}
+
+.geolocationIcon {
+  margin-right: 10px;
+  font-size: 20px;
+  color: red;
+}
